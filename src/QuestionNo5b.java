@@ -15,23 +15,27 @@ Question 5.b)
         with a capacity of 40 miles; and ultimately, we may arrive at our destination.
 */
 class BatteryReplacement {
+    // A method that takes service centers, target miles, and start charge capacity as input, and returns the number of battery replacements needed
     public int numBatteryReplacements(int[][] serviceCenters, int targetMiles, int startChargeCapacity) {
         int count = 0;
         int currentMiles = startChargeCapacity;
         ArrayList<Integer> distances = new ArrayList<>();
         ArrayList<Integer> capacities = new ArrayList<>();
 
+        // Seperating distances and capacities from service centers array
         for (int[] serviceCenter : serviceCenters) {
             distances.add(serviceCenter[0]);
             capacities.add(serviceCenter[1]);
         }
 
+        // Counting the number of battery replacements needed
         for (int i = 0; i < distances.size(); i++) {
             if (distances.get(i) > currentMiles) {
                 currentMiles = capacities.get(i - 1);
                 count++;
             }
         }
+        // Adding an extra battery replacement if the car's final mileage is not reached
         if (currentMiles < targetMiles) {
             count++;
         }

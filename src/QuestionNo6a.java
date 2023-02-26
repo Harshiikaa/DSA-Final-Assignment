@@ -14,7 +14,7 @@ class Huffman {
         HuffmanNode right;
     }
 
-    //prints the encoded huffman code
+    // method to print the encoded huffman code
     public static void printCode(HuffmanNode root, String s){
         if(root.left==null&&root.right==null&&Character.isLetter(root.c)){
             System.out.println(root.c+":"+s);
@@ -24,7 +24,7 @@ class Huffman {
         printCode(root.right,s+"1");
     }
 
-    //encoding
+    // method to encode the data using Huffman coding
     public HuffmanNode encode(char[] charArray, int[] charFreq){
         int n=charArray.length;
         PriorityQueue<HuffmanNode> q = new PriorityQueue<>(n, new MyComparator());
@@ -51,11 +51,12 @@ class Huffman {
             root=f;
             q.add(f);
         }
+        // print the encoded Huffman code
         printCode(root,"");
         return root;
     }
 
-    //decoding the huffman tree
+    // method to decode the Huffman tree and decompress the data
     public void decode(HuffmanNode root, String str){
         ArrayList characters= new ArrayList<>();
         ArrayList frequency=new ArrayList<>();
@@ -77,18 +78,22 @@ class Huffman {
             characters.add(current.c);
             frequency.add(current.data);
         }
+        // print the decoded characters and their corresponding frequency
         printDecode(characters,frequency);
     }
 
+    // method to print the decoded characters and their corresponding frequency
     public static void printDecode(ArrayList characters, ArrayList frequencies){
         for (int i=0; i<characters.size(); i++){
             System.out.println(characters.get(i)+":"+frequencies.get(i));
         }
     }
+
+    // inner class to compare the Huffman nodes based on their frequency
     class MyComparator implements Comparator<HuffmanNode> {
         public int compare(Huffman.HuffmanNode x, Huffman.HuffmanNode y)
         {
-            //used to sort the character in the sequence of r
+            // used to sort the characters in the sequence of their frequency
             return x.data - y.data;
         }
     }
