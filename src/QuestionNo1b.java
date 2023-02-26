@@ -71,8 +71,8 @@ class ISPApplication {
 
         // Find all subgraphs
         for (int v = 0; v < V; ++v) {
-            //Checks if Vertext is Visited or is broken or not
-            //If Visited, it is not necssary to visit again and also if it is broken then it automatically separates graphs
+            //Checks if Vertex is Visited or is broken or not
+            //If Visited, it is not necessary to visit again and also if it is broken then it automatically separates graphs
             if (!visited[v] && v != brokenNode) {
                 // Defined a subgraph for each as there might be multiple small disconnected due to one breakage point
                 List<Integer> subgraph = new ArrayList<>();
@@ -81,12 +81,12 @@ class ISPApplication {
                 // if the Subgraph is the breakpoint or if the subgraph has source of network then
                 //it is not disconnected from network
                 if (!subgraph.contains(brokenNode) && !subgraph.contains(0)) {
-                    //If above condition satisfied then all all small part of subgraph to subgraphs
+                    //If above condition satisfied then all small part of subgraph to subgraphs
                     subgraphs.addAll(subgraph);
                 }
             }
         }
-        //Finally returned subgraphs
+        // Finally returned subGraphs
         return subgraphs;
     }
 
@@ -108,12 +108,11 @@ class ISPApplication {
         //broken Node
         int brokenNode = 4;
         // Create a graph
-//        Graph g = new Graph(8,edges,brokenNode);
-//
-//        System.out.println("Interuppted Networks:");
-//        //Get Disconencted Networks
-//        List<Integer> subgraphs = g.getDisconnectedSubgraphs();
-//        System.out.println(subgraphs);
+        ISPApplication g = new ISPApplication(8,edges,brokenNode);
+        System.out.println("Interuppted Networks:");
+        //Get Disconnected Networks
+        List<Integer> subgraphs = g.getDisconnectedSubgraphs();
+        System.out.println(subgraphs);
 
     }
 }

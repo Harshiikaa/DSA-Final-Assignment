@@ -6,8 +6,8 @@ import java.util.PriorityQueue;
 Question 6
         a)	Implement Huffman encoding and decoding.
 */
- class Huffman {
-     class HuffmanNode{
+class Huffman {
+    class HuffmanNode{
         int data;
         char c;
         HuffmanNode left;

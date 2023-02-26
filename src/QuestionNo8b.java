@@ -15,17 +15,16 @@ class MissingEven {
     public static int findKthMissingEvenNumber(int[] a, int k) {
         List<Integer> missingEvens = new ArrayList<>();
         int j = 0;
-        for (int i = a[0]; i < a[a.length - 1]; i += 2) {
+        int i = a[0];
+        while (missingEvens.size() < k) {
             if (j < a.length && a[j] == i) {
                 j++;
-                continue;
+            } else {
+                missingEvens.add(i);
             }
-            missingEvens.add(i);
-            if (missingEvens.size() == k) {
-                return i;
-            }
+            i += 2;
         }
-        return a[a.length - 1] + 2 * k;
+        return missingEvens.get(k - 1);
     }
 
     public static void main(String[] args) {

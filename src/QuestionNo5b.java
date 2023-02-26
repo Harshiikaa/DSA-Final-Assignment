@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 /*
 Question 5.b)
         Assume an electric vehicle must go from source city s to destination city d.
@@ -12,7 +14,7 @@ Question 5.b)
         batteries with a capacity of 60 miles; and after travelling 50 miles, at position 60 we change batteries
         with a capacity of 40 miles; and ultimately, we may arrive at our destination.
 */
-public class BatteryReplacement {
+class BatteryReplacement {
     public int numBatteryReplacements(int[][] serviceCenters, int targetMiles, int startChargeCapacity) {
         int count = 0;
         int currentMiles = startChargeCapacity;
@@ -37,9 +39,8 @@ public class BatteryReplacement {
     }
     public static void main(String[] args) {
         int [][] serviceCenterList={{10,60},{20,30},{30,30},{60,40}};
-        Question5B question1=new Question5B();
+        BatteryReplacement question1=new BatteryReplacement();
         int finalAnswer=question1.numBatteryReplacements(serviceCenterList,100,10);
         System.out.println("the car's batteries need to be replaced: "+finalAnswer +"times.");
     }
 }
-
